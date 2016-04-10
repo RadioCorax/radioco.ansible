@@ -1,0 +1,4 @@
+---
+branch: production
+workdir: /srv/radioco
+bind_address: "[::1]:9000"

@@ -1,0 +1,30 @@
+upstream radioco_{{ branch }} {
+    server {{ bind_address }};
+}
+
+server {
+    listen 0.0.0.0:80;
+    listen [::]:80;
+    server_name {{ public_name }};
+
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://radioco_{{ branch }};
+        proxy_redirect off;
+    }
+
+    # Static files
+    location /static {
+        alias {{ workdir }}/static;
+    }
+
+    # Media files
+    location /media {
+        alias {{ workdir }}/media;
+    }
+}
+

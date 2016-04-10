@@ -1,0 +1,4 @@
+---
+- include: requirements.yml
+- include: postgres.yml
+- include: radioco.yml

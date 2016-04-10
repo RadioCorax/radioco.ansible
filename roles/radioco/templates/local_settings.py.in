@@ -1,0 +1,39 @@
+import os
+
+
+SECRET_KEY = '{{ secret_key }}'
+
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+ALLOWED_HOSTS = ['{{ public_name }}']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ database.name }}',
+        'USER': '{{ database.user }}',
+        'PASSWORD': '{{ database.password }}',
+        'HOST': '{{ database.host }}'
+    }
+}
+
+STATIC_ROOT = os.path.join('{{ workdir }}', 'static')
+
+BOWER_PATH = os.path.join('{{ workdir }}', 'node_modules', '.bin', 'bower')
+
+LANGUAGE_CODE = 'de'
+
+TIME_ZONE = 'Europe/Berlin'
+
+gettext_noop = lambda s: s
+PROGRAMME_LANGUAGES = (
+    ('de', gettext_noop('German')),
+    ('es', gettext_noop('Spanish')),
+    ('en', gettext_noop('English')),
+    ('gl', gettext_noop('Galician')),
+)
+
+# Admin
+GRAPPELLI_ADMIN_HEADLINE = 'RadioCo'
+GRAPPELLI_ADMIN_TITLE = 'RadioCo'

@@ -1,0 +1,13 @@
+---
+- hosts: dbserver
+  tasks:
+    - name: create radioco database user
+      become_user: postgres
+      become: yes
+      postgresql_user: name={{ database.user }} password={{ database.password }} encrypted=yes
+
+    - name: create radioco database
+      become_user: postgres
+      become: yes
+      postgresql_db: name={{ database.name }} owner={{ database.user }}
+

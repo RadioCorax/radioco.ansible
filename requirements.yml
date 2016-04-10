@@ -1,0 +1,17 @@
+---
+- hosts: appservers
+  tasks:
+  - name: install requirements
+    become: yes
+    apt: name={{ item }}
+    with_items:
+      - git
+      - libjpeg-dev
+      - libpq-dev
+      - nodejs-legacy
+      - npm
+      - python-dev
+      - python-pip
+      - python-psycopg2
+      - python-virtualenv
+      - supervisor

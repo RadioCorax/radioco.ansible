@@ -1,0 +1,17 @@
+---
+- name: run database migration
+  command: ./bin/radioco-admin migrate chdir={{workdir}}
+
+- name: run bower install
+  command: ./bin/radioco-admin bower install chdir={{workdir}}
+
+- name: run collectstatic
+  command: ./bin/radioco-admin collectstatic --noinput --clear chdir={{workdir}}
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+  become: yes
+
+- name: restart supervisord process
+  supervisorctl: name=radioco_{{ branch }} state=restarted
+  become: yes
