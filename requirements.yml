@@ -15,3 +15,10 @@
       - python-psycopg2
       - python-virtualenv
       - supervisor
+- hosts: dbserver
+  tasks:
+  - name: install requirements
+    become: yes
+    apt: name={{ item }}
+    with_items:
+        - python-psycopg2
