@@ -9,7 +9,7 @@ versions = versions
 
 sources = sources
 auto-checkout = *
-#always-checkout = force
+always-checkout = force
 
 [sources]
 radioco = git https://github.com/stefan-walluhn/django-radio.git branch={{ branch }}
