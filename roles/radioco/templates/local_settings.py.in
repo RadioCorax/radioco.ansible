@@ -19,19 +19,27 @@ DATABASES = {
 }
 
 STATIC_ROOT = os.path.join('{{ workdir }}', 'static')
-
+MEDIA_ROOT = os.path.join('{{ workdir }}', 'media')
 BOWER_PATH = os.path.join('{{ workdir }}', 'node_modules', '.bin', 'bower')
 
 LANGUAGE_CODE = 'de'
 
 TIME_ZONE = 'Europe/Berlin'
 
+# According to http://www.loc.gov/standards/iso639-2/php/code_list.php
 gettext_noop = lambda s: s
 PROGRAMME_LANGUAGES = (
+    ('ar', gettext_noop('Arabic')),
     ('de', gettext_noop('German')),
-    ('es', gettext_noop('Spanish')),
     ('en', gettext_noop('English')),
+    ('es', gettext_noop('Spanish')),
+    ('fa', gettext_noop('Persian')),
+    ('ff', gettext_noop('Fulah')),
+    ('fr', gettext_noop('French')),
     ('gl', gettext_noop('Galician')),
+    ('pt', gettext_noop('Portuguese')),
+    ('ro', gettext_noop('Romanian')),
+    ('rom', gettext_noop('Romany')),
 )
 
 # Admin

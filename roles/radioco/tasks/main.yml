@@ -35,6 +35,9 @@
 - name: create static dir
   file: path={{workdir}}/static state=directory owner={{ansible_user_id}}
 
+- name: create media dir
+  file: path={{workdir}}/media state=directory owner=radioco
+
 - name: configure supervisord
   become: yes
   template: dest=/etc/supervisor/conf.d/radioco_{{ branch }}.conf src=supervisord.conf.in

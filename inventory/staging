@@ -1,8 +1,8 @@
 [dbserver]
-192.168.11.101 ansible_user=root ansible_become_method=su
+192.168.11.101 ansible_ssh_user=root ansible_become_method=su
 
 [appservers]
-192.168.11.205 ansible_user=root ansible_become_method=su
+192.168.11.205 ansible_ssh_user=root ansible_become_method=su
 
 [staging:children]
 dbserver
