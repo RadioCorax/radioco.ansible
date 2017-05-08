@@ -1,0 +1,4 @@
+from django.conf.urls import include, url
+from radioco.configs.common.urls import urlpatterns
+
+urlpatterns += url(r'^frapp/$', include('radioco.frapp.urls'))

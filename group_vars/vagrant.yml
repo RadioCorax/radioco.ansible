@@ -1,8 +1,15 @@
 ---
 public_name: radioco.127.0.0.1.nip.io
 secret_key: foobarbaz
+
 database:
   name: radioco
   user: radioco
   password: foobar
   host: localhost
+
+email:
+  host: localhost
+  user: foo
+  password: bar
+  from: radioco@localhost

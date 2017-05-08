@@ -1,51 +1,71 @@
 ---
 - name: create radioco system user
   become: yes
-  user: name=radioco createhome=no system=yes shell=/usr/sbin/nologin
+  user:
+    name: radioco
+    createhome: no
+    system: yes
+    shell: /usr/sbin/nologin
 
-- name: create workdir
+- name: create workdirs
   become: yes
-  file: path={{workdir}} state=directory owner={{ansible_user_id}}
-
-- name: prepare buildout env
-  pip: name=zc.buildout virtualenv={{workdir}}
-
-- name: copy buildout config
-  template: dest={{workdir}}/buildout.cfg src=buildout.cfg.in
-
-- name: run buildout
-  command: ./bin/buildout chdir={{workdir}}
-  notify:
-    - run database migration
-    - run bower install
-    - run collectstatic
-    - restart supervisord process
-
-- name: configure radioco
-  template: dest={{workdir}}/src/radioco/radioco/configs/common/local_settings.py src=local_settings.py.in
-  notify:
-    - run database migration
-    - run bower install
-    - run collectstatic
-    - restart supervisord process
+  file:
+    path: "{{workdir}}/{{ item }}"
+    state: directory
+  with_items:
+    - wrapper
+    - static
 
 - name: install bower
-  npm: name=bower path={{ workdir }}
+  npm:
+    name: bower
+    path: "{{ workdir }}"
 
-- name: create static dir
-  file: path={{workdir}}/static state=directory owner={{ansible_user_id}}
+
+- name: prepare buildout env
+  pip:
+    name: zc.buildout
+    virtualenv: "{{workdir}}"
+
+- name: copy buildout config
+  template:
+    dest: "{{workdir}}/buildout.cfg"
+    src: buildout.cfg.in
+  notify:
+    - run buildout
+
+- name: configure radioco
+  template:
+    dest: "{{workdir}}/wrapper/{{ item }}.py"
+    src: "wrapper/{{ item }}.py.in"
+  with_items:
+    - settings
+    - urls
+    - __init__
+  notify:
+    - run database migration
+    - run bower install
+    - run collectstatic
+    - restart supervisord process
 
 - name: create media dir
-  file: path={{workdir}}/media state=directory owner=radioco
+  file:
+    path: "{{workdir}}/media"
+    state: directory
+    owner: radioco
 
 - name: configure supervisord
   become: yes
-  template: dest=/etc/supervisor/conf.d/radioco_{{ branch }}.conf src=supervisord.conf.in
+  template:
+    dest: "/etc/supervisor/conf.d/radioco_{{ branch }}.conf"
+    src: supervisord.conf.in
   notify:
     - restart supervisord process
 
 - name: configure nginx
   become: yes
-  template: dest=/etc/nginx/conf.d/radioco_{{ branch }}.conf src=nginx.conf.in
+  template:
+    dest: "/etc/nginx/conf.d/radioco_{{ branch }}.conf"
+    src: nginx.conf.in
   notify:
     - reload nginx

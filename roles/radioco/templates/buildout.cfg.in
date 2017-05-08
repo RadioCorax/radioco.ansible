@@ -12,19 +12,21 @@ auto-checkout = *
 always-checkout = force
 
 [sources]
+radioco.frapp = git https://github.com/stefan-walluhn/radioco.frapp.git
 radioco = git https://github.com/stefan-walluhn/django-radio.git branch={{ branch }}
 
 [radioco]
 recipe = djangorecipe
-project = radioco
+project = wrapper
 eggs =
+    radioco.frapp
     radioco
     psycopg2
     gunicorn
 
 control-script = radioco-admin
 scripts-with-settings = gunicorn
-settings = configs.common.settings
+settings = settings
 
 [versions]
 Django = 1.8.4
@@ -37,6 +39,7 @@ django-filebrowser = 3.6.4
 django-filter = 0.13.0
 django-grappelli = 2.7.3
 django-recurrence = 1.2.0
+django-solo-grappelli = 1.1.2
 djangorecipe = 2.1.2
 djangorestframework = 3.3.3
 funcsigs = 0.4

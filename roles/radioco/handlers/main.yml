@@ -1,4 +1,12 @@
 ---
+- name: run buildout
+  command: ./bin/buildout chdir={{workdir}}
+  notify:
+    - run database migration
+    - run bower install
+    - run collectstatic
+    - restart supervisord process
+
 - name: run database migration
   command: ./bin/radioco-admin migrate chdir={{workdir}}
 
@@ -9,9 +17,13 @@
   command: ./bin/radioco-admin collectstatic --noinput --clear chdir={{workdir}}
 
 - name: reload nginx
-  service: name=nginx state=reloaded
   become: yes
+  service:
+    name: nginx
+    state: reloaded
 
 - name: restart supervisord process
-  supervisorctl: name=radioco_{{ branch }} state=restarted
   become: yes
+  supervisorctl:
+    name: "radioco_{{ branch }}"
+    state: restarted

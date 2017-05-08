@@ -1,3 +1,4 @@
+from radioco.configs.common.settings import *
 import os
 
 
@@ -5,6 +6,11 @@ SECRET_KEY = '{{ secret_key }}'
 
 DEBUG = False
 TEMPLATE_DEBUG = False
+
+INSTALLED_APPS = INSTALLED_APPS + (
+    'radioco.frapp',
+    'solo',
+)
 
 ALLOWED_HOSTS = ['{{ public_name }}']
 
@@ -24,6 +30,8 @@ DATABASES = {
         'HOST': '{{ database.host }}'
     }
 }
+
+ROOT_URLCONF = 'corax.urls'
 
 STATIC_ROOT = os.path.join('{{ workdir }}', 'static')
 MEDIA_ROOT = os.path.join('{{ workdir }}', 'media')
