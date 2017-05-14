@@ -4,4 +4,4 @@ command={{ workdir }}/bin/gunicorn-with-settings -b {{ bind_address }} radioco.c
 directory={{ workdir }}
 redirect_stderr=true
 user=radioco
-
+stopasgroup=true

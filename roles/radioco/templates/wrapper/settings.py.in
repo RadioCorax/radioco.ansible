@@ -31,7 +31,7 @@ DATABASES = {
     }
 }
 
-ROOT_URLCONF = 'corax.urls'
+ROOT_URLCONF = 'wrapper.urls'
 
 STATIC_ROOT = os.path.join('{{ workdir }}', 'static')
 MEDIA_ROOT = os.path.join('{{ workdir }}', 'media')

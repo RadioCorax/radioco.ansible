@@ -1,4 +1,6 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, patterns, url
 from radioco.configs.common.urls import urlpatterns
 
-urlpatterns += url(r'^frapp/$', include('radioco.frapp.urls'))
+urlpatterns += patterns(
+    '',
+    url(r'^station-data', include('radioco.frapp.urls', namespace="frapp")))
