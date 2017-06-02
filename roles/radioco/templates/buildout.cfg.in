@@ -13,7 +13,7 @@ always-checkout = force
 
 [sources]
 radioco.frapp = git https://github.com/stefan-walluhn/radioco.frapp.git
-radioco = git https://github.com/stefan-walluhn/django-radio.git branch={{ branch }}
+radioco = git https://github.com/stefan-walluhn/django-radio.git rev={{ radioco_revision }}
 
 [radioco]
 recipe = djangorecipe

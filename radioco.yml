@@ -1,4 +1,5 @@
 ---
 - hosts: appservers
   roles:
-    - radioco
+    - role: radioco
+      radioco_revision: 5ced752ef9aa2ef900652d3fea15f2db9b08e337
