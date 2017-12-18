@@ -12,8 +12,8 @@ auto-checkout = *
 always-checkout = force
 
 [sources]
-radioco.frapp = git https://github.com/stefan-walluhn/radioco.frapp.git
-radioco = git https://github.com/stefan-walluhn/django-radio.git rev={{ radioco_revision }}
+radioco.frapp = git https://github.com/RadioCorax/radioco.frapp.git
+radioco = git https://github.com/RadioCorax/radioco.git rev={{ radioco_revision }}
 
 [radioco]
 recipe = djangorecipe
