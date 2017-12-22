@@ -2,4 +2,4 @@
 - hosts: appservers
   roles:
     - role: radioco
-      radioco_revision: b4dfef15949404502caffe3a68e05692ab12a2eb
+      radioco_revision: 9aeddb66a848d388153092fcc654df2b87ee94cc
