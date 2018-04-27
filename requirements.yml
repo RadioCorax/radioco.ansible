@@ -8,8 +8,7 @@
       - git
       - libjpeg-dev
       - libpq-dev
-      - nodejs-legacy
-      - npm
+      - nodejs
       - python-dev
       - python-pip
       - python-psycopg2
