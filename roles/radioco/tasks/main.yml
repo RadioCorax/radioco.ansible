@@ -25,6 +25,7 @@
 - name: prepare buildout env
   pip:
     name: zc.buildout
+    version: 2.10.0
     virtualenv: "{{workdir}}"
 
 - name: copy buildout config
