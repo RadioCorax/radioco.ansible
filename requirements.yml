@@ -1,5 +1,6 @@
 ---
 - hosts: appservers
+  gather_facts: no
   tasks:
   - name: install requirements
     become: yes
@@ -9,12 +10,13 @@
       - libjpeg-dev
       - libpq-dev
       - nodejs
-      - python-dev
       - python-pip
-      - python-psycopg2
       - python-virtualenv
+      - python3-dev
       - supervisor
+
 - hosts: dbserver
+  gather_facts: no
   tasks:
   - name: install requirements
     become: yes

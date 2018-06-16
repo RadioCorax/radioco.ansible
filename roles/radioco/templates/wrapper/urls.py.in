@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from radioco.configs.common.urls import urlpatterns
+from radioco.test.urls import urlpatterns
 
 urlpatterns += [
     url(

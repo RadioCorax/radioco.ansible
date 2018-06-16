@@ -1,4 +1,4 @@
-from radioco.configs.common.settings import *
+from radioco.test.settings import *
 import os
 
 
@@ -35,7 +35,6 @@ ROOT_URLCONF = 'wrapper.urls'
 
 STATIC_ROOT = os.path.join('{{ workdir }}', 'static')
 MEDIA_ROOT = os.path.join('{{ workdir }}', 'media')
-BOWER_PATH = os.path.join('{{ workdir }}', 'node_modules', '.bin', 'bower')
 
 LANGUAGE_CODE = 'de'
 

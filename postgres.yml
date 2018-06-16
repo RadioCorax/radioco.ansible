@@ -1,5 +1,6 @@
 ---
 - hosts: dbserver
+  gather_facts: no
   tasks:
     - name: create radioco database user
       become_user: postgres

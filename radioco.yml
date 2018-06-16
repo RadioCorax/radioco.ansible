@@ -1,5 +1,6 @@
 ---
 - hosts: appservers
+  gather_facts: no
   roles:
     - role: radioco
-      radioco_revision: bd290bce5ce88c4ceb9b02da2b662b2f28ca033f
+      radioco_revision: 6a702950db262044006fe8938141d1c40bee6ee9

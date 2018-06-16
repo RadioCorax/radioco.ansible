@@ -16,17 +16,12 @@
     - wrapper
     - static
 
-- name: install bower
-  npm:
-    name: bower
-    path: "{{ workdir }}"
-
-
 - name: prepare buildout env
   pip:
     name: zc.buildout
     version: 2.10.0
     virtualenv: "{{workdir}}"
+    virtualenv_python: python3
 
 - name: copy buildout config
   template:
@@ -42,10 +37,11 @@
   with_items:
     - settings
     - urls
+    - wsgi
     - __init__
   notify:
     - run database migration
-    - run bower install
+    - run npm install
     - run collectstatic
     - restart supervisord process
 
