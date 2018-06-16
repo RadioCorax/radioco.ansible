@@ -1,4 +1,4 @@
-from radioco.test.settings import *
+from radioco.settings import *
 import os
 
 
@@ -9,7 +9,7 @@ TEMPLATE_DEBUG = False
 
 INSTALLED_APPS = INSTALLED_APPS + (
     'radioco.frapp',
-    'solo',
+    'solo'
 )
 
 ALLOWED_HOSTS = ['{{ public_name }}']

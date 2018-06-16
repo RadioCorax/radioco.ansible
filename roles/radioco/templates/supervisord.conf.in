@@ -1,6 +1,6 @@
 [program:radioco_{{ branch }}]
 autorestart=true
-command={{ workdir }}/bin/gunicorn-with-settings -b {{ bind_address }} wrapper.wsgi
+command={{ workdir }}/bin/gunicorn-with-settings -b {{ bind_address }} radioco.wsgi
 directory={{ workdir }}
 redirect_stderr=true
 user=radioco
