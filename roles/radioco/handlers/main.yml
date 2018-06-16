@@ -3,18 +3,11 @@
   command: ./bin/buildout chdir={{workdir}}
   notify:
     - run database migration
-    - run npm install
     - run collectstatic
     - restart supervisord process
 
 - name: run database migration
   command: ./bin/radioco-admin migrate chdir={{workdir}}
-
-- name: run npm install
-  npm:
-    name: git+https://github.com/RadioCorax/radioco.git#{{ radioco_revision }}
-    path: "{{workdir}}"
-    state: latest
 
 - name: run collectstatic
   command: ./bin/radioco-admin collectstatic --noinput --clear chdir={{workdir}}

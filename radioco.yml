@@ -3,4 +3,3 @@
   gather_facts: no
   roles:
     - role: radioco
-      radioco_revision: 084eb6836d8ace19a9c6ab9b6681f772befd49d7

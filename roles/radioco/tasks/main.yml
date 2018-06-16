@@ -40,7 +40,6 @@
     - __init__
   notify:
     - run database migration
-    - run npm install
     - run collectstatic
     - restart supervisord process
 
@@ -49,6 +48,14 @@
     path: "{{workdir}}/media"
     state: directory
     owner: radioco
+
+- name: install JavaScript dependencies
+  npm:
+    name: git+https://github.com/RadioCorax/radioco.git#{{ radioco_revision }}
+    path: "{{workdir}}"
+    state: latest
+  notify:
+    - run collectstatic
 
 - name: configure supervisord
   become: yes

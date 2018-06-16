@@ -1,4 +1,4 @@
 ---
-- include: requirements.yml
-- include: postgres.yml
-- include: radioco.yml
+- import_playbook: requirements.yml
+- import_playbook: postgres.yml
+- import_playbook: radioco.yml
