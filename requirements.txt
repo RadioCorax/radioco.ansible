@@ -1,4 +1,4 @@
 Ansible>=2.5.4
 dnspython
 netaddr
-git+https://github.com/dw/mitogen.git@c24d29d3676aa122e25716450246306aaf4a797b#egg=mitogen
+mitogen>=0.2.9
