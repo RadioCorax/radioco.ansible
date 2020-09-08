@@ -1,25 +1,24 @@
 ---
 - hosts: appservers
-  gather_facts: no
+  gather_facts: FalsFalse
   tasks:
   - name: install requirements
-    become: yes
-    apt: name={{ item }}
-    with_items:
-      - git
-      - libjpeg-dev
-      - libpq-dev
-      - nodejs
-      - python-pip
-      - python-virtualenv
-      - python3-dev
-      - supervisor
+    become: True
+    apt:
+      name:
+        - git
+        - libjpeg-dev
+        - libpq-dev
+        - nodejs
+        - python-pip
+        - python-virtualenv
+        - python3-dev
+        - supervisor
 
 - hosts: dbserver
-  gather_facts: no
+  gather_facts: False
   tasks:
   - name: install requirements
-    become: yes
-    apt: name={{ item }}
-    with_items:
-        - python-psycopg2
+    become: True
+    apt:
+      name: python-psycopg2
