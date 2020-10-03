@@ -19,7 +19,7 @@
 - name: prepare buildout env
   pip:
     name: zc.buildout
-    version: 2.10.0
+    version: 2.13.3
     virtualenv: "{{workdir}}"
     virtualenv_python: python3
 
