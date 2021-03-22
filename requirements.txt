@@ -1,4 +1,4 @@
-Ansible>=2.5.4
+Ansible<2.10
 dnspython
 netaddr
 mitogen>=0.2.9
