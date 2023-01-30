@@ -1,6 +1,6 @@
 ---
 - hosts: appservers
-  gather_facts: FalsFalse
+  gather_facts: False
   tasks:
   - name: install requirements
     become: True
