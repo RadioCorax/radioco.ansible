@@ -12,7 +12,7 @@ auto-checkout = *
 always-checkout = force
 
 [sources]
-radioco.frapp = git https://github.com/RadioCorax/radioco.frapp.git
+radioco.frapp = git https://github.com/RadioCorax/radioco.frapp.git rev={{ radioco_frapp_revision }}
 radioco = git https://github.com/RadioCorax/radioco.git rev={{ radioco_revision }}
 
 [radioco]
