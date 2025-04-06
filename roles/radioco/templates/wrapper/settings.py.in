@@ -27,7 +27,7 @@ DATABASES = {
         'NAME': '{{ database.name }}',
         'USER': '{{ database.user }}',
         'PASSWORD': '{{ database.password }}',
-        'HOST': '{{ database.host }}'
+        'HOST': '{{ database_host }}'
     }
 }
 

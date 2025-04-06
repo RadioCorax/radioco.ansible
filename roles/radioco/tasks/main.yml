@@ -1,14 +1,12 @@
 ---
 - name: create radioco system user
-  become: yes
   user:
     name: radioco
-    createhome: no
-    system: yes
+    createhome: False
+    system: True
     shell: /usr/sbin/nologin
 
 - name: create workdirs
-  become: yes
   file:
     path: "{{workdir}}/{{ item }}"
     state: directory
@@ -58,17 +56,8 @@
     - run collectstatic
 
 - name: configure supervisord
-  become: yes
   template:
     dest: "/etc/supervisor/conf.d/radioco_{{ branch }}.conf"
     src: supervisord.conf.in
   notify:
     - restart supervisord process
-
-- name: configure nginx
-  become: yes
-  template:
-    dest: "/etc/nginx/conf.d/radioco_{{ branch }}.conf"
-    src: nginx.conf.in
-  notify:
-    - reload nginx

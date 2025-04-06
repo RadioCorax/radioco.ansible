@@ -1,9 +1,9 @@
-[dbserver]
-192.168.11.101 ansible_ssh_user=root ansible_become_method=su
+[dbservers]
+db-00.unterberg.radiocorax.de
 
 [appservers]
-192.168.11.205 ansible_ssh_user=root ansible_become_method=su
+radioco-00.unterberg.radiocorax.de
 
 [staging:children]
-dbserver
+dbservers
 appservers

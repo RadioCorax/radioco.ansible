@@ -1,5 +1,7 @@
 ---
 - hosts: appservers
-  gather_facts: no
+  gather_facts: False
+  become: True
   roles:
     - role: radioco
+      database_host: "{{ groups['dbservers']|first }}"

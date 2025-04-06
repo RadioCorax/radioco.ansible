@@ -1,14 +1,16 @@
 ---
-- hosts: dbserver
-  gather_facts: no
+- hosts: dbservers
+  gather_facts: False
+  become_user: postgres
+  become: True
   tasks:
     - name: create radioco database user
-      become_user: postgres
-      become: yes
-      postgresql_user: name={{ database.user }} password={{ database.password }} encrypted=yes
+      postgresql_user:
+        name: "{{ database.user }}"
+        password: "{{ database.password }}"
 
     - name: create radioco database
-      become_user: postgres
-      become: yes
-      postgresql_db: name={{ database.name }} owner={{ database.user }}
+      postgresql_db:
+        name: "{{ database.name }}"
+        owner: "{{ database.user }}"
 
