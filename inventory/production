@@ -1,8 +1,8 @@
 [appservers]
-db-00.unterberg.radiocorax.de
+radioco-00.unterberg.radiocorax.de
 
 [dbservers]
-radioco-00.unterberg.radiocorax.de
+db-00.unterberg.radiocorax.de
 
 [production:children]
 dbservers
